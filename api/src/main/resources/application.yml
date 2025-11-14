@@ -1,0 +1,10 @@
+server:
+  tomcat:
+    uri-encoding: utf-8
+
+
+spring:
+  application:
+    name: ai-interview
+  profiles:
+    active: dev
