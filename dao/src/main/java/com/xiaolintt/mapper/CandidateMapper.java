@@ -2,6 +2,7 @@ package com.xiaolintt.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.xiaolintt.po.Candidate;
+import org.apache.ibatis.annotations.Mapper;
 
 
 /**
@@ -12,6 +13,8 @@ import com.xiaolintt.po.Candidate;
  * @author fyx
  * @since 2024-11-17
  */
+@Mapper
+
 public interface CandidateMapper extends BaseMapper<Candidate> {
 
 }

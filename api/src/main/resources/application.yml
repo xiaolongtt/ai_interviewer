@@ -1,10 +1,21 @@
 server:
+  port: 8080
   tomcat:
     uri-encoding: utf-8
-
+    max-swallow-size: -1   # 不限制请求体的大小, 用于处理大文件上传将判断放给spring处理
 
 spring:
   application:
     name: ai-interview
   profiles:
     active: dev
+  servlet:
+    multipart:
+      max-file-size: 10MB      # 文件上传大小的限制
+      max-request-size: 10MB   # 文件最大请求限制
+
+# 分页插件助手的配置
+pagehelper:
+  helper-dialect: MYSQL
+  support-methods-arguments: true
+

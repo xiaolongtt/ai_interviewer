@@ -2,6 +2,7 @@ package com.xiaolintt.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.xiaolintt.po.QuestionLib;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.xiaolintt.po.QuestionLib;
  * @author fyx
  * @since 2024-11-17
  */
+@Mapper
 public interface QuestionLibMapper extends BaseMapper<QuestionLib> {
 
 }
