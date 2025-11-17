@@ -13,4 +13,6 @@ import java.io.IOException;
 
 public interface IFileService {
     String uploadInterviewerImage(MultipartFile file) throws Exception;
+
+    String uploadInterviewerVideo(MultipartFile file) throws Exception;
 }

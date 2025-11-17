@@ -35,4 +35,21 @@ public class FileController {
         }
         return GraceJSONResult.Success(fileService.uploadInterviewerImage(file));
     }
+
+
+    /**
+     * 上传面试者视频
+     * @param file
+     * @return
+     * @throws Exception
+     */
+    @PostMapping("/uploadInterviewVideo")
+    public GraceJSONResult uploadInterviewerVideo(@RequestParam("file") MultipartFile file) throws Exception{
+        String filename = file.getOriginalFilename();
+        if(StringUtils.isBlank(filename)){
+            return GraceJSONResult.ErrorMsg("文件名不能为空");
+        }
+        return GraceJSONResult.Success(fileService.uploadInterviewerVideo(file));
+    }
+
 }

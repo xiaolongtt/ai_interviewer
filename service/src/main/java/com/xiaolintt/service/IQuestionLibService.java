@@ -1,5 +1,8 @@
 package com.xiaolintt.service;
 
+import com.xiaolintt.Bo.QuestionLibBo;
+import com.xiaolintt.result.PageGraceResult;
+
 /**
  * @version 1.0
  * @Author xiaolong
@@ -7,4 +10,13 @@ package com.xiaolintt.service;
  * @注释
  */
 public interface IQuestionLibService {
+    void createOrUpdate(QuestionLibBo questionLibBo);
+
+    PageGraceResult list(String aiName, String question, Integer page, Integer pageSize);
+
+    void hide(String questionLibId);
+
+    void show(String questionLibId);
+
+    void delete(String questionLibId);
 }

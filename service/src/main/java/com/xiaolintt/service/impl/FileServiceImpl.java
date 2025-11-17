@@ -29,6 +29,12 @@ public class FileServiceImpl implements IFileService {
         return MinIOUtils.uploadFile(minIoConfig.getBucketName(), filename, file.getInputStream(), true);
     }
 
+    @Override
+    public String uploadInterviewerVideo(MultipartFile file) throws Exception {
+        String filename ="interviewerVideo_"+ dealFilename(file.getOriginalFilename());
+        return MinIOUtils.uploadFile(minIoConfig.getBucketName(), filename, file.getInputStream(), true);
+    }
+
     private String dealFilename(String filename){
         String fileExtension = filename.substring(filename.lastIndexOf("."));//获取到文件后缀
         filename = UUID.randomUUID()+fileExtension;

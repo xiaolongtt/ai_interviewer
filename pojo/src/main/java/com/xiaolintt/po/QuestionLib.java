@@ -46,7 +46,7 @@ public class QuestionLib implements Serializable {
 
     /**
      * 1：启用本题
-0：关闭本题
+        0：关闭本题
      */
     private Integer isOn;
 
