@@ -2,8 +2,14 @@ package com.xiaolintt.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.xiaolintt.Bo.InterviewerBo;
+import com.xiaolintt.enums.ResponseStatusEnum;
+import com.xiaolintt.exception.MyCustomException;
 import com.xiaolintt.mapper.InterviewerMapper;
+import com.xiaolintt.mapper.JobMapper;
+import com.xiaolintt.mapper.QuestionLibMapper;
 import com.xiaolintt.po.Interviewer;
+import com.xiaolintt.po.Job;
+import com.xiaolintt.po.QuestionLib;
 import com.xiaolintt.service.IInterviewerService;
 import jakarta.annotation.Resource;
 import org.springframework.beans.BeanUtils;
@@ -23,6 +29,12 @@ public class InterviewerServiceImpl implements IInterviewerService {
 
     @Resource
     private InterviewerMapper interviewerMapper;
+
+    @Resource
+    private JobMapper jobMapper;
+
+    @Resource
+    private QuestionLibMapper questionLibMapper;
 
     @Override
     public void createOrUpdate(InterviewerBo interviewerBo) {
@@ -45,7 +57,21 @@ public class InterviewerServiceImpl implements IInterviewerService {
 
     @Override
     public void deleteInterviewer(String interviewerId) {
-        //TODO 检查是否有正在进行的面试和面试官关联的题目等
+        //检查是否有正在进行的面试和面试官关联的题目等
+        LambdaQueryWrapper<Job> lambdaQueryWrapper=new LambdaQueryWrapper<Job>();
+        lambdaQueryWrapper.eq(Job::getInterviewerId,interviewerId);
+        List<Job> jobs = jobMapper.selectList(lambdaQueryWrapper);
+        if(!jobs.isEmpty()){
+            //说明有正在进行的面试或面试官关联的题目等
+            throw new MyCustomException(ResponseStatusEnum.CAN_NOT_DELETE_INTERVIEWER);
+        }
+        LambdaQueryWrapper<QuestionLib> questionLibLambdaQueryWrapper=new LambdaQueryWrapper<>();
+        questionLibLambdaQueryWrapper.eq(QuestionLib::getInterviewerId,interviewerId);
+        List<QuestionLib> questionLibs = questionLibMapper.selectList(questionLibLambdaQueryWrapper);
+        if(!questionLibs.isEmpty()){
+            //说明有题目关联
+            throw new MyCustomException(ResponseStatusEnum.CAN_NOT_DELETE_INTERVIEWER);
+        }
         interviewerMapper.deleteById(interviewerId);
     }
 

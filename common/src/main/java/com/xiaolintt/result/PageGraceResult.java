@@ -20,5 +20,5 @@ public class PageGraceResult {
     private Integer page;
     private Integer total; // 总页数
     private Integer records; // 总记录数
-    private List<?> list;
+    private List<?> rows;
 }

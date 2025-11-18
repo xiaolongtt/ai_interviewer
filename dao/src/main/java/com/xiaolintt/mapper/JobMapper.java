@@ -2,7 +2,10 @@ package com.xiaolintt.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.xiaolintt.po.Job;
+import com.xiaolintt.vo.JobVo;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * <p>
@@ -15,4 +18,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface JobMapper extends BaseMapper<Job> {
 
+    List<JobVo> selectListByInterviewer();
+
+    JobVo selectJobVoById(String jobId);
 }

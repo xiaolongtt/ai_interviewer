@@ -1,11 +1,8 @@
 package com.xiaolintt.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.github.pagehelper.PageHelper;
 import com.xiaolintt.Bo.QuestionLibBo;
-import com.xiaolintt.mapper.InterviewerMapper;
 import com.xiaolintt.mapper.QuestionLibMapper;
-import com.xiaolintt.po.Interviewer;
 import com.xiaolintt.po.QuestionLib;
 import com.xiaolintt.result.PageGraceResult;
 import com.xiaolintt.service.IQuestionLibService;
