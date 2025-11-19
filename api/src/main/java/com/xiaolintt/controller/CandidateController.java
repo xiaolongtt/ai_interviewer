@@ -1,12 +1,11 @@
 package com.xiaolintt.controller;
 
+import com.xiaolintt.Bo.CandidateBO;
 import com.xiaolintt.result.GraceJSONResult;
+import com.xiaolintt.result.PageGraceResult;
 import com.xiaolintt.service.ICandidateService;
 import jakarta.annotation.Resource;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,19 +21,28 @@ public class CandidateController {
     @Resource
     private ICandidateService candidateService;
 
-    /**
-     * 应聘者列表查询
-     * @param realName
-     * @param mobile
-     * @param page
-     * @param pageSize
-     * @return
-     */
-    @GetMapping("/list")
+    @PostMapping("createOrUpdate")
+    public GraceJSONResult createOrUpdate(@RequestBody CandidateBO candidateBO) {
+        candidateService.createOrUpdate(candidateBO);
+        return GraceJSONResult.Success();
+    }
+
+    @GetMapping("list")
     public GraceJSONResult list(@RequestParam String realName, @RequestParam String mobile,
                                 @RequestParam(defaultValue = "1", name = "page") Integer page,
                                 @RequestParam(defaultValue = "10", name = "pageSize") Integer pageSize) {
+        PageGraceResult gridResult = candidateService.queryList(realName, mobile, page, pageSize);
+        return GraceJSONResult.Success(gridResult);
+    }
 
-        return null;
+    @GetMapping("detail")
+    public GraceJSONResult detail(@RequestParam String candidateId) {
+        return GraceJSONResult.Success(candidateService.getDetail(candidateId));
+    }
+
+    @PostMapping("delete")
+    public GraceJSONResult delete(@RequestParam String candidateId) {
+        candidateService.delete(candidateId);
+        return GraceJSONResult.Success();
     }
 }

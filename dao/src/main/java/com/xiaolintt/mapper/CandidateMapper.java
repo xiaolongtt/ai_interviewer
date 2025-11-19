@@ -2,7 +2,10 @@ package com.xiaolintt.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.xiaolintt.po.Candidate;
+import com.xiaolintt.vo.CandidateVO;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 
 /**
@@ -16,5 +19,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 
 public interface CandidateMapper extends BaseMapper<Candidate> {
+
+    List<CandidateVO> queryCandidateLibList(String realName, String mobile);
 
 }

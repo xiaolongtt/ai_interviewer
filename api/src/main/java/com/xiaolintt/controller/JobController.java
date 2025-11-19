@@ -31,15 +31,20 @@ public class JobController {
     public GraceJSONResult listAll(@RequestParam Integer page, @RequestParam Integer pageSize){
         return GraceJSONResult.Success(jobService.list(page, pageSize));
     }
-    @PostMapping ("delete")
+    @PostMapping ("/delete")
     public GraceJSONResult delete(@RequestParam String jobId) {
         jobService.delete(jobId);
         return GraceJSONResult.Success();
     }
 
-    @GetMapping("detail")
+    @GetMapping("/detail")
     public GraceJSONResult list(@RequestParam String jobId) {
         return GraceJSONResult.Success(jobService.getDetail(jobId));
+    }
+
+    @GetMapping("/nameList")
+    public GraceJSONResult nameList() {
+        return GraceJSONResult.Success(jobService.getNameList());
     }
 
 }

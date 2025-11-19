@@ -4,6 +4,9 @@ import com.xiaolintt.Bo.JobBo;
 import com.xiaolintt.result.PageGraceResult;
 import com.xiaolintt.vo.JobVo;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * @version 1.0
  * @Author xiaolong
@@ -18,4 +21,6 @@ public interface IJobService {
     void delete(String jobId);
 
     JobVo getDetail(String jobId);
+
+    List<Map<String,String>> getNameList();
 }

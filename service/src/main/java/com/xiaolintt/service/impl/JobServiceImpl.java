@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @version 1.0
@@ -57,5 +58,10 @@ public class JobServiceImpl implements IJobService {
     @Override
     public JobVo getDetail(String jobId) {
         return jobMapper.selectJobVoById(jobId);
+    }
+
+    @Override
+    public List<Map<String,String>> getNameList() {
+        return jobMapper.selectList(null).stream().map(Job->Map.of("jobId",Job.getId(),"jobName",Job.getJobName())).toList();
     }
 }
