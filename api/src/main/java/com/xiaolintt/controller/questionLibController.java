@@ -68,4 +68,9 @@ public class questionLibController {
         questionLibService.delete(questionLibId);
         return GraceJSONResult.Success();
     }
+
+    @GetMapping("/prepareQuestion")
+    public GraceJSONResult prepareQuestion(@RequestParam String candidateId){
+        return GraceJSONResult.Success(questionLibService.prepareQuestion(candidateId));
+    }
 }

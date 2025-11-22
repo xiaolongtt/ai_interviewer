@@ -2,6 +2,9 @@ package com.xiaolintt.service;
 
 import com.xiaolintt.Bo.QuestionLibBo;
 import com.xiaolintt.result.PageGraceResult;
+import com.xiaolintt.vo.InitQuestionsVO;
+
+import java.util.List;
 
 /**
  * @version 1.0
@@ -19,4 +22,6 @@ public interface IQuestionLibService {
     void show(String questionLibId);
 
     void delete(String questionLibId);
+
+    List<InitQuestionsVO> prepareQuestion(String candidateId);
 }
