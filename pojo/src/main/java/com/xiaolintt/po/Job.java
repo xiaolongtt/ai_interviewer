@@ -34,7 +34,7 @@ public class Job implements Serializable {
 
     /**
      * 1：职位开启
-2：职位关闭
+        2：职位关闭
      */
     private Integer status;
 

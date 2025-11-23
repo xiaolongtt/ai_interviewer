@@ -153,6 +153,14 @@
         <version>2.11.0</version>
       </dependency>
 
+<!--      调用大模型的SDK-->
+
+      <dependency>
+        <groupId>ai.z.openapi</groupId>
+        <artifactId>zai-sdk</artifactId>
+        <version>0.1.0</version>
+      </dependency>
+
 
     </dependencies>
   </dependencyManagement>

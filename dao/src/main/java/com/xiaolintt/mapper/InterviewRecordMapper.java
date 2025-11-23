@@ -2,7 +2,11 @@ package com.xiaolintt.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.xiaolintt.po.InterviewRecord;
+import com.xiaolintt.vo.CandidateVO;
+import com.xiaolintt.vo.InterviewRecordVO;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * <p>
@@ -15,4 +19,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface InterviewRecordMapper extends BaseMapper<InterviewRecord> {
 
+    List<InterviewRecordVO> queryInterviewRecordLibList(String realName, String mobile);
 }

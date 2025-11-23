@@ -167,6 +167,12 @@
             <artifactId>minio</artifactId>
         </dependency>
 
+
+        <dependency>
+            <groupId>ai.z.openapi</groupId>
+            <artifactId>zai-sdk</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

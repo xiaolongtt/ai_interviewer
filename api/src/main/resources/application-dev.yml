@@ -32,3 +32,6 @@ minio:
   bucketName: ai-interviewer
   accessKey: admin
   secretKey: admin123456
+
+zhiPuAi:
+  API_KEY: 7c392b36a9164eb7a5cbe9896ce0a0b3.Br4FGriy08I6xKBI
